@@ -28,11 +28,11 @@ a {
 /* Header */
 
 header {
-    background: #0f172a;
+    background: #0e9610;
     color: white;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 50;
 }
 
 .header-inner {
@@ -41,14 +41,19 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 20px;
+    padding: 5px 9px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
 }
 
 .logo {
-    font-weight: 800;
+    font-weight: 500;
     font-size: 24px;
+}
+
+.site-logo {
+    align-items: first baseline;
+    max-width: 100px;
 }
 
 
@@ -455,4 +460,292 @@ nav>ul>li>a {
         gap: 10px;
         font-size: 14px;
     }
+}
+
+
+/* Tăng kích thước khung/card trên màn hình nhỏ */
+
+@media (max-width: 1024px) {
+    /* làm card lớn hơn một chút trên tablet */
+    .product-card {
+        flex: 0 0 40%;
+        max-width: 40%;
+        padding: 14px;
+    }
+    .product-card img {
+        height: 200px;
+    }
+    .product-info h3 {
+        font-size: 18px;
+    }
+    .price {
+        font-size: 20px;
+    }
+}
+
+
+/* Điểm chính: trên mobile, scale card để chiếm không gian, tăng padding và font */
+
+@media (max-width: 768px) {
+    .product-card {
+        flex: 0 0 80%;
+        max-width: 80%;
+        padding: 16px;
+        transform-origin: center center;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    /* Tùy chọn: scale nhẹ để card "to" hơn */
+    .product-card.scale-up {
+        transform: scale(1.03);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+    }
+    .product-card img {
+        height: 220px;
+    }
+    .product-info h3 {
+        font-size: 18px;
+    }
+    .price {
+        font-size: 20px;
+    }
+    /* Nút to hơn để dễ bấm */
+    .btn-sm {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+
+/* Rất nhỏ: 1 card full width, tăng padding/line-height */
+
+@media (max-width: 420px) {
+    .product-card {
+        flex: 0 0 95%;
+        max-width: 95%;
+        padding: 18px;
+    }
+    .product-card.scale-up {
+        transform: scale(1.06);
+    }
+    .product-card img {
+        height: 260px;
+    }
+    .product-info h3 {
+        font-size: 20px;
+    }
+    .price {
+        font-size: 22px;
+    }
+    .btn-sm {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+
+/* Đảm bảo carousel-wrap tự co giãn theo nội dung */
+
+.carousel-wrap {
+    display: block;
+    padding: 8px 0;
+}
+
+
+/* Khi grid có transform, đảm bảo không bị overflow cắt chữ */
+
+.grid {
+    align-items: stretch;
+}
+
+
+/* Tùy chọn: ẩn nút nếu muốn trên mobile */
+
+@media (max-width: 420px) {
+    .carousel-btn {
+        display: none;
+    }
+}
+
+
+/* Giỏ hàng: drawer góc phải dưới (ghi đè style #cart cũ) */
+
+#cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 360px;
+    max-width: calc(100% - 40px);
+    max-height: 75vh;
+    height: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.35);
+    z-index: 120;
+    transform: translateY(110%);
+    /* ẩn xuống dưới */
+    transition: transform 0.35s cubic-bezier(.2, .9, .2, 1), opacity 0.25s;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+/* Khi mở */
+
+#cart.open {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+/* Header nhỏ gọn trong drawer */
+
+#cart .cart-header {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eef2f7;
+}
+
+
+/* Nội dung cuộn nếu quá dài */
+
+#cart .cart-items {
+    padding: 12px;
+    overflow: auto;
+    max-height: calc(75vh - 140px);
+    /* trừ header + footer */
+}
+
+
+/* Footer cố định */
+
+#cart .cart-footer {
+    padding: 12px 16px;
+    border-top: 1px solid #eef2f7;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 1));
+}
+
+
+/* Overlay mờ toàn màn hình khi mở */
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 110;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+}
+
+#overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* Mobile: biến thành bottom sheet full width */
+
+@media (max-width: 520px) {
+    #cart {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 12px 12px 0 0;
+        transform: translateY(110%);
+        max-height: 85vh;
+    }
+    #cart.open {
+        transform: translateY(0);
+    }
+    /* header lớn hơn để dễ chạm */
+    #cart .cart-header {
+        padding: 16px;
+    }
+    #cart .cart-footer {
+        padding: 16px;
+    }
+}
+
+
+/* Nút giỏ hàng cố định góc phải dưới */
+
+.cart-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 130;
+    /* cao hơn overlay/cart */
+    background: linear-gradient(180deg, #16a34a, #059669);
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.25);
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s;
+}
+
+
+/* Badge số lượng */
+
+.cart-btn #cart-count {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-weight: 800;
+    color: #fff;
+    font-size: 14px;
+}
+
+
+/* Hover / active */
+
+.cart-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(2, 6, 23, 0.28);
+}
+
+.cart-btn:active {
+    transform: translateY(-2px) scale(.99);
+}
+
+
+/* Khi drawer mở, có thể ẩn nút để không che nội dung (tùy chọn) */
+
+body.cart-open .cart-btn {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px) scale(.98);
+}
+
+
+/* Mobile: tăng kích thước, di chuyển ra khỏi cạnh nếu cần */
+
+@media (max-width: 520px) {
+    .cart-btn {
+        right: 14px;
+        bottom: 14px;
+        padding: 14px 18px;
+        font-size: 16px;
+    }
+}
+
+
+/* Nếu bạn vẫn muốn giữ nút header, ẩn trên mobile để tránh trùng lặp */
+
+@media (max-width: 800px) {
+    header .cart-btn {
+        display: none;
+    }
+    /* ẩn nút header nếu có */
 }

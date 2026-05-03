@@ -159,22 +159,43 @@ document.addEventListener('DOMContentLoaded', () => {
         resetAuto();
     });
 
-    // Auto slide
+    // Auto slide// Thay thế handler next và startAuto bằng đoạn này
+
+    // Next button (nhảy về đầu khi tới cuối)
+    nextBtn.addEventListener('click', () => {
+        const all = items();
+        const max = Math.max(0, all.length - getVisibleCount());
+        if (index < max) index = index + 1;
+        else index = 0; // reset về đầu
+        update();
+        resetAuto();
+    });
+
+    // Auto slide (nhảy về đầu khi tới cuối)
     function startAuto() {
         stopAuto();
         autoInterval = setInterval(() => {
             const all = items();
             if (all.length <= getVisibleCount()) return;
-            index = (index < all.length - getVisibleCount()) ? index + 1 : 0;
+            const max = all.length - getVisibleCount();
+            if (index < max) index = index + 1;
+            else index = 0; // reset về đầu
             update();
         }, AUTO_MS);
     }
 
-    function stopAuto() { if (autoInterval) { clearInterval(autoInterval);
-            autoInterval = null; } }
 
-    function resetAuto() { stopAuto();
-        startAuto(); }
+    function stopAuto() {
+        if (autoInterval) {
+            clearInterval(autoInterval);
+            autoInterval = null;
+        }
+    }
+
+    function resetAuto() {
+        stopAuto();
+        startAuto();
+    }
 
     // Pause on hover
     wrap.addEventListener('mouseenter', stopAuto);

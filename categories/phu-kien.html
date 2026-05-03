@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Phụ Kiện Golf - Golf Pro Shop</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">⛳ Golf Pro Shop</div>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Trang chủ</a></li>
+                    <li class="dropdown"><a href="/categories/gay-golf.html">GẬY GOLF</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/products/gay-golf/driver-titleist-tsr2.html">Driver</a></li>
+                            <li><a href="/products/gay-golf/iron-callaway-rogue.html">Iron Set</a></li>
+                            <li><a href="/products/gay-golf/putter-scotty-cameron.html">Putter</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="/categories/phu-kien.html">PHỤ KIỆN</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/products/phu-kien/bong-titleist-prov1.html">Bóng Golf</a></li>
+                            <li><a href="/products/phu-kien/gang-tay-footjoy.html">Găng Tay</a></li>
+                            <li><a href="/products/phu-kien/tui-ping-hoofer.html">Túi Golf</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="/categories/thoi-trang.html">THỜI TRANG</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/products/thoi-trang/ao-polo-adidas.html">Áo Polo</a></li>
+                            <li><a href="/products/thoi-trang/giay-nike-airzoom.html">Giày</a></li>
+                            <li><a href="/products/thoi-trang/mu-titleist.html">Mũ</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="/policies/doi-tra.html">CHÍNH SÁCH</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/policies/doi-tra.html">Đổi trả</a></li>
+                            <li><a href="/policies/van-chuyen.html">Vận chuyển</a></li>
+                            <li><a href="/policies/bao-hanh.html">Bảo hành</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <button class="cart-btn" id="cart-btn">Giỏ hàng (<span id="cart-count">0</span>)</button>
+        </div>
+    </header>
+
+    <div id="overlay"></div>
+    <div id="cart">
+        <div class="cart-header"><span>Giỏ hàng</span><button id="cart-close">✕</button></div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer"><strong>Tổng: <span id="cart-total">0₫</span></strong></div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">PHỤ KIỆN GOLF</h2>
+        <div class="grid" id="grid"></div>
+    </div>
+
+    <footer style="background:#0f172a;color:#94a3b8;text-align:center;padding:40px 20px;margin-top:60px;">
+        © 2026 Golf Pro Shop
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        const grid = document.getElementById('grid');
+        products.filter(p => p.cat === 'phu-kien').forEach(p => {
+            grid.innerHTML += `
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.name}">
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="price">${fmt(p.price)}</div>
+        <div class="card-actions">
+          <a class="btn-sm btn-outline" href="/products/${p.cat}/${p.slug}.html">Xem chi tiết</a>
+          <button class="btn-sm btn-primary" onclick="addToCart('${p.id}')">Thêm vào giỏ</button>
+        </div>
+      </div>
+    </div>`;
+        });
+    </script>
+</body>
+
+</html>

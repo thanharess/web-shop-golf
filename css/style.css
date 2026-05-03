@@ -1,27 +1,38 @@
+/* Reset cơ bản */
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
+
+
+/* Body */
 
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     background: #f8fafc;
     color: #1e293b;
-    line-height: 1.6
+    line-height: 1.6;
 }
+
+
+/* Links */
 
 a {
     text-decoration: none;
-    color: inherit
+    color: inherit;
 }
+
+
+/* Header */
 
 header {
     background: #0f172a;
     color: white;
     position: sticky;
     top: 0;
-    z-index: 100
+    z-index: 100;
 }
 
 .header-inner {
@@ -32,30 +43,36 @@ header {
     justify-content: space-between;
     padding: 14px 20px;
     flex-wrap: wrap;
-    gap: 10px
+    gap: 10px;
 }
 
 .logo {
     font-weight: 800;
-    font-size: 24px
+    font-size: 24px;
 }
+
+
+/* Navigation */
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 nav li {
-    position: relative
+    position: relative;
 }
 
 nav>ul>li>a {
     padding: 10px 12px;
     display: block;
-    font-weight: 600
+    font-weight: 600;
 }
+
+
+/* Dropdown */
 
 .dropdown-menu {
     position: absolute;
@@ -68,44 +85,47 @@ nav>ul>li>a {
     box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
     display: none;
     overflow: hidden;
-    z-index: 50
+    z-index: 50;
 }
 
 .dropdown-menu a {
     display: block;
     padding: 12px 16px;
-    border-bottom: 1px solid #f1f5f9
+    border-bottom: 1px solid #f1f5f9;
 }
 
 .dropdown-menu a:hover {
-    background: #f0fdf4
+    background: #f0fdf4;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block
+    display: block;
 }
+
+
+/* Hero / Slides */
 
 .hero {
     position: relative;
     height: 420px;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .slide {
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity .8s
+    transition: opacity .8s;
 }
 
 .slide.active {
-    opacity: 1
+    opacity: 1;
 }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover
+    object-fit: cover;
 }
 
 .slide-content {
@@ -114,13 +134,16 @@ nav>ul>li>a {
     top: 50%;
     transform: translateY(-50%);
     color: white;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, .5)
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
 }
 
 .slide-content h1 {
     font-size: 42px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
+
+
+/* Buttons */
 
 .btn {
     background: #22c55e;
@@ -129,83 +152,36 @@ nav>ul>li>a {
     border-radius: 8px;
     font-weight: 700;
     display: inline-block;
-    transition: all .3s
+    transition: all .3s;
 }
 
 .btn:hover {
     background: #16a34a;
-    transform: scale(1.05)
+    transform: scale(1.05);
 }
+
+
+/* Container / Section */
 
 .container {
     max-width: 1200px;
     margin: auto;
-    padding: 40px 20px
+    padding: 40px 20px;
 }
 
 .section-title {
     font-size: 28px;
     margin-bottom: 24px;
     font-weight: 800;
-    text-align: center
+    text-align: center;
 }
 
-.carousel {
-    position: relative
-}
 
-.carousel-track {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 20px
-}
-
-.carousel-track::-webkit-scrollbar {
-    display: none
-}
-
-.product-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
-    min-width: 260px;
-    flex: 0 0 260px;
-    transition: all .3s
-}
-
-.product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .12)
-}
-
-.product-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover
-}
-
-.product-info {
-    padding: 16px
-}
-
-.product-info h3 {
-    font-size: 16px;
-    margin-bottom: 8px
-}
-
-.price {
-    color: #16a34a;
-    font-weight: 800;
-    font-size: 18px;
-    margin-bottom: 12px
-}
+/* Card actions and small buttons */
 
 .card-actions {
     display: flex;
-    gap: 8px
+    gap: 8px;
 }
 
 .btn-sm {
@@ -215,23 +191,20 @@ nav>ul>li>a {
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .btn-primary {
     background: #0f172a;
-    color: white
+    color: white;
 }
 
 .btn-outline {
-    border: 1px solid #e2e8f0
+    border: 1px solid #e2e8f0;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px
-}
+
+/* Cart button */
 
 .cart-btn {
     background: #22c55e;
@@ -240,15 +213,18 @@ nav>ul>li>a {
     padding: 10px 18px;
     border-radius: 8px;
     font-weight: 700;
-    cursor: pointer
+    cursor: pointer;
 }
+
+
+/* Overlay and cart panel */
 
 #overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, .5);
     display: none;
-    z-index: 90
+    z-index: 90;
 }
 
 #cart {
@@ -262,11 +238,11 @@ nav>ul>li>a {
     transition: right .3s;
     z-index: 100;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
 }
 
 #cart.open {
-    right: 0
+    right: 0;
 }
 
 .cart-header {
@@ -275,33 +251,36 @@ nav>ul>li>a {
     font-weight: 800;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
 }
 
 .cart-items {
     flex: 1;
     overflow: auto;
-    padding: 16px
+    padding: 16px;
 }
 
 .cart-item {
     display: flex;
     gap: 12px;
-    margin-bottom: 16px
+    margin-bottom: 16px;
 }
 
 .cart-item img {
     width: 70px;
     height: 70px;
     object-fit: cover;
-    border-radius: 8px
+    border-radius: 8px;
 }
 
 .cart-footer {
     padding: 20px;
     border-top: 1px solid #e2e8f0;
-    font-size: 18px
+    font-size: 18px;
 }
+
+
+/* Product detail */
 
 .product-detail {
     display: grid;
@@ -309,29 +288,171 @@ nav>ul>li>a {
     gap: 40px;
     background: white;
     padding: 30px;
-    border-radius: 16px
+    border-radius: 16px;
 }
+
+
+/* Quantity controls */
 
 .qty {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 20px 0
+    margin: 20px 0;
 }
 
 .qty button {
     width: 40px;
     height: 40px;
     border: 1px solid #ddd;
-    border-radius: 6px
+    border-radius: 6px;
 }
 
-@media(max-width:800px) {
+
+/* --- Carousel core (hợp nhất, không trùng lặp) --- */
+
+
+/* Wrapper để đặt nút điều hướng */
+
+.carousel-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+
+/* Grid chuyển thành track ngang */
+
+.grid {
+    display: flex;
+    gap: 24px;
+    padding: 12px 0;
+    transition: transform 0.5s ease;
+    will-change: transform;
+    overflow: hidden;
+}
+
+
+/* Product card (định nghĩa duy nhất, responsive bằng flex-basis) */
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
+    transition: all .3s;
+    flex: 0 0 25%;
+    max-width: 25%;
+    min-width: 0;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+
+/* Product info */
+
+.product-info {
+    padding: 16px;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #16a34a;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+
+/* Responsive: điều chỉnh số card hiển thị */
+
+@media (max-width: 1024px) {
+    .product-card {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 420px) {
+    .product-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* Nút điều hướng carousel */
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    background: rgba(15, 23, 42, 0.9);
+    color: #fff;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 1;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.25);
+}
+
+.carousel-prev {
+    left: 12px;
+}
+
+.carousel-next {
+    right: 12px;
+}
+
+
+/* Ẩn nút trên màn hình rất nhỏ nếu muốn */
+
+@media (max-width: 420px) {
+    .carousel-btn {
+        display: none;
+    }
+}
+
+
+/* Accessibility focus styles */
+
+.carousel-btn:focus {
+    outline: 2px solid #22c55e;
+    outline-offset: 2px;
+}
+
+
+/* Small screens adjustments */
+
+@media (max-width: 800px) {
     .product-detail {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
     }
     nav ul {
         gap: 10px;
-        font-size: 14px
+        font-size: 14px;
     }
 }
